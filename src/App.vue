@@ -17,9 +17,9 @@ import { RouterLink, RouterView } from 'vue-router';
     <div id="afterHeader"></div>
 
     <div>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/quotation">Quotation</RouterLink>
+      <nav id="navigationHome">
+        <RouterLink to="/" id="navigationItem" class="autowidth b-radius">Home</RouterLink>
+        <RouterLink to="/quotation" id="navigationItem" class="autowidth b-radius">Devis</RouterLink>
       </nav>
     </div>
   </header>
@@ -27,22 +27,32 @@ import { RouterLink, RouterView } from 'vue-router';
   <main>
     <RouterView></RouterView>
   </main>
+
+  <footer>
+    © Copyright
+  </footer>
 </template>
 
 <style scoped>
 body {
   font-family: 'Eras-bold';
+  z-index: 2;
 }
 
 main{
-  margin-top: 50px;
   display: flex;
   justify-content: center;
 }
 
 header {
-  background-color: #19897e;
   height: 15vh;
+}
+
+footer{
+  color: white;
+  text-align: center;
+  background-color: black;
+  height: 25vh;
 }
 
 .horizontal {
@@ -56,13 +66,35 @@ header {
 }
 
 .lightgreen {
-  background-color: #499f49;
+  background-color: #19897e;
 }
 
 .b-radius {
-  border-radius: 50px;
+  border-radius: 500px;
 }
 
+.autowidth{
+  width: auto;
+  height: auto;
+}
+
+#navigationHome{
+  position: absolute;
+  margin: 15px;
+  z-index: 3;
+}
+
+#navigationHome *{
+  align-items: center;
+  justify-content: center;
+  display: flex ;
+ background-color: #19897e;
+ color: white;
+ margin: 10px;
+ height: 5vw;
+ width: 5vw;
+ border-radius:250;
+}
 
 #headerContainer {
 
@@ -76,12 +108,14 @@ header {
 }
 
 #afterHeader {
+  position: relative;
   width: 100%;
   height: 5vh;
-  margin-top: -2.5vh;
+  margin-top: -4vh;
   background-image: url(./assets/images/1x/header_backgroud.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  z-index:3;
 }
 
 #logo1Container {
