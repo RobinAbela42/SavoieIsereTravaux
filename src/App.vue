@@ -41,7 +41,7 @@ main{
 }
 
 header {
-  background-color: rgba(231, 240, 255, 0.795);
+  background-color: #19897e;
   height: 15vh;
 }
 
