@@ -6,9 +6,13 @@
   src: url('./fonts/eras-itc-bold.ttf');
 }
 
+@font-face {
+  font-family: 'Eras-book';
+  src: url('./fonts/eras-itc-book.otf');
+}
+
 #app {
   margin-top: -10px;
-  height: 100vh;
   font-weight: normal;
 }
 
@@ -24,5 +28,79 @@ a,
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.eras-book {
+  font-family: 'Eras-book';
+}
+
+.eras-bold {
+  font-family: 'Eras-bold';
+}
+
+
+
+.leftpadding {
+  padding-left: 35px;
+}
+
+.articleLeft {
+  padding: 10vh 10vw 10vh 30vw;
+}
+.imgArticleLeft{
+  margin-left: 10vw;
+  margin-top: 5vh;
+}
+
+.imgArticleRight{
+
+}
+
+.textRight {
+  text-align: right;
+}
+
+.button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #19897e;
+  color: white;
+  padding: 15px;
+  height: auto;
+  width: auto;
+  border-radius: 250px;
+}
+
+.articleRight {
+  padding: 10vh 30vw 10vh 10vw;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.green{
+  color: #19897e;
+}
+
+#worksTypeCache {
+  width: 100px;
+  height: 100px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.formRadio {
+  width: 100px;
+  height: 100px;
+
 }
 
