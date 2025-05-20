@@ -1,5 +1,3 @@
-
-
 <template>
 
     <div id="main">
@@ -13,22 +11,55 @@
                     </div> -->
 
                     <label for="renovation" class="">
-                    <!-- <label for="renovation" class="button formRadio"> -->
+                        <!-- <label for="renovation" class="button formRadio"> -->
                         <input type="radio" id="renovation" name="workType" value="renovation">
                         <label for="renovation">Rénovation</label>
                     </label>
                     <label for="fresh">
                         <input type="radio" id="fresh" name="workType" value="fresh">
                         <label for="fresh">Neuf</label>
-                    </label >
+                    </label>
                     <label for="extention">
                         <input type="radio" id="extention" name="workType" value="extention">
                         <label for="extention">Extention</label>
-                    </label >
+                    </label>
                     <label for="otherWorksType">
                         <input type="radio" id="otherWorksType" name="workType" value="otherWorksType">
                         <label for="otherWorksType">Autre</label>
-                    </label >
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div id="worksParts">Votre projet concerne :
+
+                    <label for="kitchen" class="">
+                        <input type="checkbox" id="kitchen" name="kitchen">
+                        <label for="kitchen">Cuisine</label>
+                    </label>
+                    <label for="plaster" class="">
+                        <input type="checkbox" id="plaster" name="plaster">
+                        <label for="plaster">Plâterie</label>
+                    </label>
+                    <label for="tiling" class="">
+                        <input type="checkbox" id="tiling" name="tiling">
+                        <label for="tiling">Carrelage</label>
+                    </label>
+                    <label for="electricity" class="">
+                        <input type="checkbox" id="electricity" name="electricity">
+                        <label for="electricity">Carrelage</label>
+                    </label>
+                    <label for="plumbing" class="">
+                        <input type="checkbox" id="plumbing" name="plumbing">
+                        <label for="plumbing">Plomberie</label>
+                    </label>
+                    <label for="masonery" class="">
+                        <input type="checkbox" id="masonery" name="masonery">
+                        <label for="masonery">Maçonnerie</label>
+                    </label>
+                    <label for="roofing" class="">
+                        <input type="checkbox" id="roofing" name="roofing">
+                        <label for="roofing">Toiture</label>
+                    </label>
                 </div>
             </fieldset>
             <fieldset>
@@ -81,7 +112,7 @@
                     <label for="surname">Prénom :</label>
                     <input type="text" v-model="surname" id="surname">
                     <label for="phone">Téléphone :</label>
-                    <input type="text"  v-model="phone" id="phone">
+                    <input type="text" v-model="phone" id="phone">
                     <label for="addressName">Adresse :</label>
                     <input v-model="addressNameCustomer" id="addressName">
                     <label type="text" for="addressCity">Ville :</label>
@@ -116,20 +147,20 @@ import { onMounted } from 'vue';
 
 
 export default {
-  data() {
-    return {
-      name : "",
-      surname : "",
-      phone : "",
-      addressNameCustomer : "",
-      addressCityCustomer : "",
-      postalCodeCustomer  : "",
-      addressNameSite : "",
-      addressCitySite : "",
-      postalCodeSite : "",
-      comment : "",
+    data() {
+        return {
+            name: "",
+            surname: "",
+            phone: "",
+            addressNameCustomer: "",
+            addressCityCustomer: "",
+            postalCodeCustomer: "",
+            addressNameSite: "",
+            addressCitySite: "",
+            postalCodeSite: "",
+            comment: "",
+        }
     }
-  }
 }
 
 // onMounted(() => {
@@ -146,9 +177,8 @@ export default {
 </script>
 
 <style>
-
-#main{
-margin:20vh 50px;
+#main {
+    margin: 20vh 50px;
 }
 
 .buttonForm {

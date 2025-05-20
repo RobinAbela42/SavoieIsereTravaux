@@ -44,11 +44,11 @@ export default {
                     <div class="card mediumSize row">
                         <img src="../assets/images/papersheet.png" alt="image" class="icon">
                         <div>
-                            <h2>
+                            <h2 class="eras-bold littleTitle">
                                 Devis négocié (à changer)
 
                             </h2>
-                            <p>
+                            <p class="eras-book littleText">
                                 Nos devis sont d'une qualité irreprochables
 
                             </p>
@@ -76,33 +76,40 @@ export default {
     margin: 10px;
 }
 
-.cardContainer {
+.littleTitle{
+    font-size: 16px;
+}
 
+.littleText{
+    font-size: 13px;
+}
+
+.cardContainer {
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
     width: 15vw;
-    background: radial-gradient(ellipse at top left, #e0e0e0, white), radial-gradient(ellipse at bottom, #e0e0e0, white);
+    background: radial-gradient(ellipse at top left, #c2e0da,#e0eceb), radial-gradient(ellipse at bottom, #19897e,#19897e);
+    /* background: radial-gradient(ellipse at top left, #19897e,#1eb5a6), radial-gradient(ellipse at bottom, #19897e,#19897e); */
     border-radius: 15px;
     margin: 20px;
+    width: 80vw;
+    height: 20vh;
+}
+
+.cardContainer tbody tr td {
+    justify-content: center;
 }
 
 .card {
     align-items: center;
     width: 15vw;
     height: 15vh;
-    background-image: radial-gradient(ellipse at top right, #e0e0e0, white);
+    background-image: radial-gradient(ellipse at top right, #1fb0a2,#19897e);
     border-radius: 5px;
     margin: 20px;
+    box-shadow: black -5px 5px 2px;
 }
 
-table {
-    width: 80vw;
-    height: 20vh;
-}
-h2{
-    font-family: 'Eras-bold';
-    font-size: 16px;
-}
-p{
-    font-family: 'Eras-book';
-    font-size: 13;
-}
+
 </style>

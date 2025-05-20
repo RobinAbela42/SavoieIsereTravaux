@@ -126,9 +126,6 @@ footer {
   height: auto;
 }
 
-.hover:hover{
-  transform: scale(1.2);
-}
 
 .centerText {
   text-align: center;
