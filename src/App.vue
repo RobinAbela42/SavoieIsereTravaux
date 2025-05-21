@@ -117,9 +117,7 @@ footer {
   background-color: #19897e;
 }
 
-.b-radius {
-  border-radius: 500px;
-}
+
 
 .autowidth {
   width: auto;

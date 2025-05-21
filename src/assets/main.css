@@ -51,6 +51,10 @@ a,
   font-family: 'Eras-bold';
 }
 
+.b-radius {
+  border-radius: 500px;
+}
+
 
 
 .leftpadding {
@@ -58,12 +62,12 @@ a,
 }
 
 .articleLeft {
-  margin: 10vh 20vw 10vh 20vw;
+  margin: 10vh 10vw 10vh 20vw;
   padding: 25px;
 }
 
 .articleRight {
-  margin: 10vh 20vw 10vh 20vw;
+  margin: 10vh 20vw 10vh 10vw;
   padding: 25px;
   
 }
@@ -71,7 +75,7 @@ a,
 .imgArticleLeft {
 
   height: 50vh;
-  width: 20vw;
+  width: 60vw;
   margin-bottom: -50vh;
   margin-left: 10vw;
   margin-top: 5vh;
@@ -79,9 +83,9 @@ a,
 
 .imgArticleRight {
   height: 50vh;
-  width: 20vw;
+  width: 60vw;
   margin-bottom: -50vh; 
-  margin-left: 70vw;
+  margin-left: 30vw;
   margin-top: 5vh;
 
 }

@@ -3,7 +3,7 @@
 export default {
     props: {
         title: String,
-        message: String,
+        imageString: String,
         //true = image to the left
         direction: Boolean,
     }
@@ -13,7 +13,7 @@ export default {
 
 <template>
     <div :class="(direction ? 'imgArticleLeft' : 'imgArticleRight')" id="imgArticleContainer">
-        <img src="../assets/images/tool.jpg" alt="" id="imgArticle">
+        <img src="../assets/images/house-1.jpg" alt="" id="imgArticle" class="maxWidth">
     </div>
     <div id="tableBackground" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')" class="zindex-top"
         :class="(direction ? 'articleLeft' : 'articleRight textRight')">
@@ -28,13 +28,13 @@ export default {
                             <img src="../assets/1x/GuideLine1.png" alt="" id="GuideLine">
                         </div>
                         <div v-if="!direction">
-                            <h1 class="eras-bold white">{{ title }}</h1>
+                            <h1 class="eras-bold white title">{{ title }}</h1>
                         </div>
 
                     </td>
                     <td class="leftpadding" :rowspan="direction ? 1 : 2">
                         <div v-if="direction">
-                            <h1 class="eras-bold white">{{ title }}</h1>
+                            <h1 class="eras-bold white title">{{ title }}</h1>
 
                         </div>
                         <div v-if="!direction">
@@ -46,7 +46,7 @@ export default {
                 <tr>
                     <td class="leftpadding">
                         <p class="justify white">
-                            {{ message }}
+                            <slot /> 
                         </p>
                     </td>
                 </tr>
@@ -62,6 +62,11 @@ export default {
     position: relative;
     z-index: 5;
 }
+
+.title{
+    font-size: 45px;
+}
+
 
 h1 {
     margin-top: 0;
