@@ -11,6 +11,7 @@ export default {
 </script>
 
 
+
 <template>
     <div :class="(direction ? 'imgArticleLeft' : 'imgArticleRight')" id="imgArticleContainer">
         <img src="../assets/images/house-1.jpg" alt="" id="imgArticle" class="maxWidth">
@@ -45,7 +46,7 @@ export default {
                 </tr>
                 <tr>
                     <td class="leftpadding">
-                        <p class="justify white">
+                        <p class="justify white top">
                             <slot /> 
                         </p>
                     </td>
@@ -64,9 +65,8 @@ export default {
 }
 
 .title{
-    font-size: 45px;
+    font-size: 40px;
 }
-
 
 h1 {
     margin-top: 0;

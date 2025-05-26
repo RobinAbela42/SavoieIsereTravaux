@@ -17,7 +17,7 @@ export default {
             <slot/>
         </div>
         <div class="column" id="whyUsTitleContainer" style="line-height: 0px;">
-            <h2>
+            <h2 style="font-size: 20px;">
                 {{ title }}
             </h2>
             <p v-if="description">

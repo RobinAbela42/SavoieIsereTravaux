@@ -1,0 +1,8 @@
+bouton "demande de devis" dans "pourquoi nous ?"
+
+
+reduire l'espace entre H1 et P dans pourquoi SIT et rapeticer l'article 
+
+changer les photos avec des gens
+
+enlever "nos services"

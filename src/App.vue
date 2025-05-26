@@ -22,7 +22,8 @@ import { RouterLink, RouterView } from 'vue-router';
       <nav id="navigationHome" class="horizontal">
         <RouterLink to="/" class="centerText autowidth b-radius menu1">Home</RouterLink>
         <RouterLink to="/quotation" class="centerText autowidth b-radius menu2">Demande de devis </RouterLink>
-        <RouterLink to="/location" class="centerText autowidth b-radius menu3">Notre secteur</RouterLink>
+        <a href="#secteur" class="centerText autowidth b-radius menu3 transition">Notre secteur</a>
+        <!-- <RouterLink to="#secteur" class="centerText autowidth b-radius menu3">Notre secteur</RouterLink> -->
         <RouterLink to="/contact" class="centerText autowidth b-radius menu4">Contactez-nous </RouterLink>
       </nav>
     </div>
@@ -52,6 +53,8 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <style scoped>
 body {
+  
+  transition: ease 1s ;
   font-family: 'Eras-bold';
   z-index: 2;
 }
@@ -116,6 +119,8 @@ footer {
 .lightgreen {
   background-color: #19897e;
 }
+
+
 
 
 
