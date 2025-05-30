@@ -43,18 +43,64 @@ import { RouterLink, RouterView } from 'vue-router';
   </main>
 
   <footer>
-    © Copyright
-    <a href="https://www.flaticon.com/fr/icones-gratuites/centre-dappels" title="centre d'appels icônes">Centre d'appels
-      icônes créées par Irfansusanto20 - Flaticon</a>
-    <a href="https://www.flaticon.com/fr/icones-gratuites/equipe" title="équipe icônes">Équipe icônes créées par Freepik
-      - Flaticon</a>
+    <table id="footerTable">
+      <thead>
+        <tr>
+          <td> © Copyright
+            <a href="https://www.flaticon.com/fr/icones-gratuites/centre-dappels" title="centre d'appels icônes">Centre
+              d'appels
+              icônes créées par Irfansusanto20 - Flaticon</a>
+            <a href="https://www.flaticon.com/fr/icones-gratuites/equipe" title="équipe icônes">Équipe icônes créées par
+              Freepik
+              - Flaticon</a>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <RouterLink to="/">Home</RouterLink>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <RouterLink to="/contact">Contact</RouterLink>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <RouterLink to="/quotation">Devis</RouterLink>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
   </footer>
 </template>
 
 <style scoped>
+
+#footerTable{
+  width: 100%;
+  color: white;
+}
+#footerTable tbody tr td *{
+
+  color: white;
+}
+#footerTable tbody tr td {
+  padding: 15px;
+  color: white;
+}
+
+
+
+
 body {
-  
-  transition: ease 1s ;
+
+  transition: ease 1s;
   font-family: 'Eras-bold';
   z-index: 2;
 }
@@ -199,7 +245,6 @@ footer {
 #projetPresentationContainer {
   margin: 10px;
   position: absolute;
-  margin-top: 25px;
   right: 15px;
   z-index: 3;
 }
@@ -216,5 +261,4 @@ footer {
   width: auto;
   border-radius: 250;
 }
-
 </style>

@@ -3,7 +3,9 @@ import 'vue3-carousel/carousel.css'
 import BigArticle from '@/components/Article.vue'
 import WhyUs from '@/components/WhyUs.vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-
+import works_image_1 from '@/assets/images/travaux-1.jpg'
+import works_image_2 from '@/assets/images/travaux-2.jpg'
+import works_image_3 from '@/assets/images/travaux-3.jpg'
 
 const carouselHomeConfig = {
 
@@ -25,6 +27,26 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     url: `../src/assets/images/meeting-${index + 1}.jpg`,
 }))
 
+const icons = [
+    {
+        url: `../src/assets/images/answering-phone.png`,
+        description: "Interlocuteur unique"
+    },
+    {
+        url: `../src/assets/images/headphone.png`,
+        description: "À l'écoute"
+    },
+    {
+        url: `../src/assets/images/hand-shake.png`,
+        description: "Prestation de qualité"
+    },
+    {
+        url: `../src/assets/images/papersheet.png`,
+        description: "Devis chiffré et précis"
+    },
+]
+
+
 
 </script>
 
@@ -44,34 +66,43 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
         </Carousel>
 
 
-        <div id="subtitle">
+        <div id="subtitleRight">
             <h1 class="green">Regroupement d'artisans indépendants des métiers du bâtiment</h1>
         </div>
+        <div id="subtitleLeft">
+            <h1 class="green">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
+        </div>
 
-        <div class="littleText">
-            <p class=" contentCentered grey eras-book italic">Besoin d'une prise ene charge ou d'accompagnement pour vos
-                travaux
-                ?</p>
-        </div>
-        <div class="bigText">
-            <p class=" contentCentered green eras-bold">Devis pour vos travaux : pourquoi Savoie Isère Travaux ?</p>
-        </div>
-        <div class="littleText">
-            <p class=" contentCentered grey eras-book italic">Nous nous engagons à vous rencontrer sous 48 heures suite
-                à votre
-                demande de devis</p>
-        </div>
+
 
 
         <section id="homeArticle">
+            <div class="littleText">
+                <p class=" contentCentered grey eras-book italic">Besoin d'une prise ene charge ou d'accompagnement pour
+                    vos
+                    travaux
+                    ?</p>
+            </div>
+            <div class="bigText">
+                <p class=" contentCentered green eras-bold">Devis pour vos travaux : pourquoi Savoie Isère Travaux ?</p>
+            </div>
+            <div class="littleText">
+                <p class=" contentCentered grey eras-book italic">Nous nous engagons à vous rencontrer sous 48 heures
+                    suite
+                    à votre
+                    demande de devis</p>
+            </div>
 
-            <article class="bigArticle" id="firstSection">
-                <BigArticle title="Pourquoi nous choisir ?" :direction="true">
+            <article class="bigArticle" id="sectionWhyUs firstSection">
+                <BigArticle title="Pourquoi nous choisir ?" :direction="true" :imageSrc="works_image_1">
                     <div style="display: flex; flex-wrap: wrap;">
-                        <WhyUs title="Interlocuteur uniques">
-                            <img src="../assets/images/answering-phone.png" alt="" class="icon b-radius">
+
+
+
+                        <WhyUs v-for="icon in icons" :title="icon.description">
+                            <img :src="icon.url" alt="" class="icon b-radius background-orange">
                         </WhyUs>
-                        <WhyUs title="Prestation de qualité">
+                        <!-- <WhyUs title="Prestation de qualité">
                             <img src="../assets/images/hand-shake.png" alt="" class="icon b-radius">
                         </WhyUs>
                         <WhyUs title="À l'écoute">
@@ -79,31 +110,45 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
                         </WhyUs>
                         <WhyUs title="Devis chiffré et précis">
                             <img src="../assets/images/papersheet.png" alt="" class="icon b-radius">
-                        </WhyUs>
+                        </WhyUs> -->
                     </div>
-                    <div id="quotationButtonContainerWhyUs" class="contentRight ">
-                        <RouterLink to="/quotation" id="quotationButton" class="autowidth  centerText hover ">
-                            <div style="line-height: 10px;">
-                                <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
-                                <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre projet !</h3>
-                            </div>
-                        </RouterLink>
-                    </div>
+                    <table id="whyUsTableButton">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2>Effectuez votre demande de devis via le formulaire :</h2>
+                                </td>
+                                <td>
+                                    <div id="quotationButtonContainerWhyUs" class="contentRight">
+                                        <RouterLink to="/quotation" id="quotationButton"
+                                            class="autowidth  centerText hover ">
+                                            <div style="line-height: 10px;">
+                                                <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
+                                                <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre
+                                                    projet !
+                                                </h3>
+                                            </div>
+                                        </RouterLink>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </BigArticle>
 
             </article>
 
             <div class="littleText">
-                <p class=" contentCentered grey eras-book italic">Nous sommes tous des artisans compétents et
+                <p class=" contentCentered grey eras-book italic ">Nous sommes tous des artisans compétents et
                     éxperimentés,
-                    passionnés par nos métiers. Nous nous impliquons avec vous autour de votre projet. </p>
+                    passionnés par nos métiers. <br> Nous nous impliquons avec vous autour de votre projet. </p>
             </div>
 
-            <div id="splittedSection">
+            <div class="splittedSection">
 
-                <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="false"
-                    :touch-drag="false" :mouse-wheel="false" slide-effect="fade" :transition="1500" style="z-index: 0"
-                    :autoplay=2000 wrap-around="">
+                <Carousel v-bind="carouselHomeConfig" :mouse-drag="false" :touch-drag="false" :mouse-wheel="false"
+                    slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
                     <Slide v-for="slide in slidesSplit" :key="slide.id">
                         <img :src="slide.url" alt="image" class="halfWidth">
                     </Slide>
@@ -111,8 +156,8 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
                     <template #addons>
                     </template>
                 </Carousel>
-                <div class="imgSlideSplit spaced">
-                    <h1 class="green">Regroupement d'artisans</h1>
+                <div class="imgSlideSplit spaced" id="articleRegroupementArtisan">
+                    <h1 class="green ">Regroupement d'artisans</h1>
                     <p class="eras-book"> <span class="eras-bold">Nous sommes</span> des professionnels du bâtiments qui
                         s'impliquent avec vous : électricien, plombier,
                         maçon,
@@ -136,8 +181,7 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
             </div>
 
             <article class="bigArticle" id="firstSection">
-                <BigArticle title="Comment ça marche ? En 4 étapes :" :direction="false"
-                    image-string="../assets/images/house">
+                <BigArticle title="Comment ça marche ? En 4 étapes :" :direction="false" :imageSrc="works_image_2">
                     <div style="font-size: 15px;">
                         <h2 class="eras-bold orange">1 - Contactez-nous</h2>
                         <p class="eras-book leftpadding">Vous aurez un interlocuteur unique, le responsable travaux :
@@ -167,8 +211,64 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
                 </RouterLink>
             </div>
 
+            <div class="blackLine">
+
+            </div>
+
+            <div id="pictoLign">
+                <div class="iconContainer" v-for="image in icons">
+                    <img :src="image.url" alt="" class="icon">
+                    <div>{{ image.description }}</div>
+                </div>
+            </div>
+
+            <div class="splittedSection">
+
+                <div class="imgSlideSplit spaced" id="articleRegroupementArtisan">
+                    <h1 class="green ">Nos engagements :</h1>
+                    <p class="eras-book"> <span class="eras-bold">Rapidité : </span> Nous nous engageons à traiter votre
+                        demande
+                        dans des délais clair et à partir du moment ou nous
+                        la
+                        recevons et celui ou vous ètes contacté.
+                    </p>
+                    <p class="eras-book"> <span class="eras-bold">Expérience : </span> Nous travaillons avec de bons
+                        résultats
+                        depuis de nombreuses années, nous vous feront profiter de
+                        notre
+                        expérience. Nous collaborons avec tous les corps de métier présent sur le chantier.
+                    </p>
+                    <p class="eras-book"> <span class="eras-bold">Compétence : </span> Nous sommes tous des
+                        professionnels du
+                        bâtiment, nos formations, nos expériences, vous
+                        garantiront le bon
+                        déroulement du chantier jusqu'a sa réception.
+                    </p>
+                    <p class="eras-book"> <span class="eras-bold">Tarifs : </span> Nous vous proposons des prix étudiés
+                        et
+                        compétitfs. Nos devis sont clairs et détaillés.
+                    </p>
+                    <p class="eras-book"> <span class="eras-bold">Disponibilité : </span> Nous restons disponible, pour
+                        tout
+                        chantier ouvert. Nous sommes facilement joignable, nous vous
+                        tenons
+                        informé pendant la durée des travaux.
+                    </p>
+                </div>
+                <Carousel v-bind="carouselHomeConfig" :mouse-drag="false" :touch-drag="false" :mouse-wheel="false"
+                    slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
+                    <Slide v-for="slide in slidesSplit" :key="slide.id">
+                        <img :src="slide.url" alt="image" class="halfWidth">
+                    </Slide>
+
+                    <template #addons>
+                    </template>
+                </Carousel>
+
+            </div>
+
             <article class="bigArticle" id="firstSection">
-                <BigArticle title="Qui sommes nous ?" :direction="true" image-string="../assets/images/house">
+                <BigArticle title="Qui sommes nous ?" :direction="true" :imageSrc="works_image_3">
                     <p style="font-size: 15px;">
                         Nous sommes un collectif d'artisans passionnés, unis par une même volonté : valoriser le
                         savoir-faire
@@ -191,31 +291,46 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
                 </BigArticle>
 
             </article>
-            <article class="bigArticle" id="firstSection">
+            <!-- <article class="bigArticle" id="firstSection">
                 <BigArticle title="Nos engagements :" :direction="false">
-                    <h2>Rapidité</h2>
-                    <p>Nous nous engageons à traiter votre demande dans des délais clair et à partir du moment ou nous
-                        la
-                        recevons et celui ou vous ètes contacté.</p>
+                    <h2></h2>
+                    <p></p>
                     <h2>Expérience</h2>
                     <p>Nous travaillons avec de bons résultats depuis de nombreuses années, nous vous feront profiter de
                         notre
                         expérience. Nous collaborons avec tous les corps de métier présent sur le chantier.</p>
                     <h2>Compétence</h2>
-                    <p>nous sommes tous des professionnels du bâtiment, nos formations, nos expériences, vous
+                    <p>Nous sommes tous des professionnels du bâtiment, nos formations, nos expériences, vous
                         garantiront le bon
                         déroulement du chantier jusqu'a sa réception.</p>
                     <h2>Tarifs</h2>
-                    <p>nous vous proposons des prix étudiés et compétitfs. Nos devis sont clairs et détaillés.</p>
+                    <p>Nous vous proposons des prix étudiés et compétitfs. Nos devis sont clairs et détaillés.</p>
                     <h2>Disponibilité</h2>
                     <p>nous restons disponible, pour tout chantier ouvert. Nous sommes facilement joignable, nous vous
                         tenons
                         informé pendant la durée des travaux.</p>
                 </BigArticle>
 
+            </article> -->
+
+            <article id="secteur" class="splittedSection">
+
+                <img src="../assets/images/zone-geographique.png" alt="image" class="halfWidth">
+                <div class="imgSlideSplit spaced" id="articleRegroupementArtisan">
+                    <h1 class="green ">Notre secteur :</h1>
+                    <p class="eras-book"> Nous sommes basé aux alentours de Chambéry, nous pouvons donc intervenir dans
+                        la
+                        plupart de la région Auvergne-Rhône-Alpes. </p>
+                    <p class="eras-book"> Nous sommes basé aux alentours de Chambéry, nous pouvons donc intervenir dans
+                        la
+                        plupart de la région Auvergne-Rhône-Alpes. </p>
+                </div>
+
             </article>
 
-            <article id="secteur"></article>
+            <div class="strip">
+
+            </div>
 
             <!-- <article class="contentCentered column" id="articleServices">
                 <h2 class="white" style="font-size: 35px;">Nos services :</h2>
@@ -254,8 +369,21 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     background-color: #242424;
 }
 
+.strip{
+    width: 70vw;
+    height: 300px;
+    background-color: #19897e;
+    margin-left: 15vw;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
 .orange {
     color: orange;
+}
+
+.background-orange {
+    background-color: orange;
 }
 
 .italic {
@@ -264,7 +392,7 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
 }
 
 .littleText * {
-    font-size: 15px;
+    font-size: 21px;
 
 }
 
@@ -278,12 +406,20 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
 
 }
 
+.blackLine {
+    margin-top: 50px;
+    width: 80vw;
+    margin-left: 10vw;
+    height: 3px;
+    background-color: grey;
+}
+
 .spaced {
-    padding: 25px;
+    padding: 50px;
+    text-align: justify;
 }
 
 .icon {
-    background-color: orange;
     padding: 5px;
     width: 50px;
     height: 50px;
@@ -315,8 +451,10 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     width: 50vw;
 }
 
-#splittedSection {
+.splittedSection {
     display: flex;
+
+    margin-top: 100px;
     flex-direction: row;
 }
 
@@ -350,6 +488,10 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     background-color: white;
 }
 
+#whyUsTableButton tbody tr td {
+    width: 50%;
+}
+
 #quotationButtonContainerWhyUs {
     margin-left: 0;
 }
@@ -359,10 +501,29 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     flex-direction: column;
 }
 
-#subtitle {
+#subtitleLeft {
     background-color: white;
     width: 40vw;
     margin: 5px;
+    text-align: center;
+    border-radius: 20px;
+    height: 60px;
+    z-index: 5;
+    margin-top: -190px;
+    margin-left: 55vw;
+    margin-bottom: 130px;
+}
+
+#subtitleLeft * {
+
+    font-size: 25px;
+}
+
+#subtitleRight {
+    background-color: white;
+    width: 40vw;
+    margin: 5px;
+    height: 60px;
     text-align: center;
     border-radius: 20px;
     z-index: 5;
@@ -371,19 +532,20 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     margin-bottom: 130px;
 }
 
-#subtitle * {
+#subtitleRight * {
 
     font-size: 25px;
 }
 
 #homeArticle {
-    margin-top: 135px;
+    margin-top: -60px;
 }
 
 #projetPresentationContainer {
     width: 300px;
     z-index: 3;
-    margin-left: 40vw;
+    margin-left: 65vw;
+    margin-top: -150px;
 }
 
 #projetPresentationButton {
@@ -391,10 +553,30 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
     align-items: center;
     justify-content: center;
     display: flex;
-    text-align: center  ;
-    background-color: #19897e;
-    color: white;
+    text-align: center;
+    background-color: orange;
+    color: black;
     padding: 15px;
     border-radius: 250;
+}
+
+#articleRegroupementArtisan p {
+    font-size: 18px;
+}
+
+#sectionWhyUs {
+    margin-top: -100px;
+}
+
+
+
+#pictoLign {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 50px;
+    text-align: center;
+
 }
 </style>

@@ -28,10 +28,6 @@
 
         <div id="worksParts">Votre projet concerne :
 
-            <label for="kitchen" class="">
-                <input type="checkbox" id="kitchen" name="kitchen">
-                <label for="kitchen">Cuisine</label>
-            </label>
             <label for="plaster" class="">
                 <input type="checkbox" id="plaster" name="plaster">
                 <label for="plaster">Plâterie</label>
@@ -101,6 +97,15 @@
         <div id="">
             <label for="name">Nom* :</label>
             <input type="text" v-model="name" id="name" autocomplete="name">
+
+            <p v-for="error of v$.name.$errors" :key="error.$uid">
+                <strong>{{ error.$validator }}</strong>
+                <small> on property</small>
+                <strong>{{ error.$property }}</strong>
+                <small> says:</small>
+                <strong>{{ error.$message }}</strong>
+            </p>
+
             <label for="surname">Prénom* :</label>
             <input type="text" v-model="surname" id="surname">
             <label for="phone" required>Téléphone* :</label>
@@ -128,8 +133,19 @@
             <textarea v-model="comment" id="comment"></textarea>
         </div>
 
-        <button @click="submit">Submit</button>
+        <button @click="submitForm">Submit</button>
 
+        <p v-for="error of v$.$errors" :key="error.$uid">
+            <strong>{{ error.$validator }}</strong>
+            <small> on property</small>
+            <strong>{{ error.$property }}</strong>
+            <small> says:</small>
+            <strong>{{ error.$message }}</strong>
+        </p>
+
+    </div>
+
+    <div>
     </div>
 </template>
 
@@ -139,13 +155,18 @@ import { maxLength, minLength, required, helpers } from '@vuelidate/validators'
 
 const mailRegex = helpers.regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)
 const phoneRegex = helpers.regex(/^[0-9]*$/)
+const textRegex = helpers.regex(/^[a-zA-Z]+$/)
+
 
 export default {
+    setup() {
+        return {
+            v$: useVuelidate()
+        }
+    },
     data() {
         return {
-
-            v$: useVuelidate(),
-            name: "",
+            name: '',
             surname: "",
             phone: "",
             addressNameCustomer: "",
@@ -158,36 +179,81 @@ export default {
             comment: "",
         }
     },
-    validation() {
+    validations() {
         return {
-            name: { required },
-            surname: { required },
+            name: { required, textRegex },
+            surname: { required, textRegex },
             phone: { required, minLength: minLength(10), maxLength: maxLength(10), phoneRegex },
             mail: { required, mailRegex },
-            // addressNameCustomer: {},
-            // addressCityCustomer: {},
-            // postalCodeCustomer: {},
-            // addressNameSite: {},
-            // addressCitySite: {},
-            // postalCodeSite: {},
-            // comment: {},
+            addressNameCustomer: {},
+            addressCityCustomer: {},
+            postalCodeCustomer: {},
+            addressNameSite: {},
+            addressCitySite: {},
+            postalCodeSite: {},
+            comment: {},
         }
-
     },
     methods: {
-        async submit() {
-            this.v$.$validate() // checks all inputs
-            if (!this.v$.$error) {
-                // if ANY fail validation
-                alert('Form successfully submitted.')
-            } else {
-                alert('Form failed validation')
-            }
-
+        async submitForm() {
+            const isFormCorrect = await this.v$.$validate()
+            // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
+            if (!isFormCorrect) return
+            // actually submit form
         }
-
     }
+
 }
+
+
+// export default {
+//     data() {
+//         return {
+
+//             v$: useVuelidate(),
+//             name: "",
+//             surname: "",
+//             phone: "",
+//             addressNameCustomer: "",
+//             mail: "",
+//             addressCityCustomer: "",
+//             postalCodeCustomer: "",
+//             addressNameSite: "",
+//             addressCitySite: "",
+//             postalCodeSite: "",
+//             comment: "",
+//         }
+//     },
+//     validation() {
+//         return {
+//             name: { required },
+//             surname: { required },
+//             phone: { required, minLength: minLength(10), maxLength: maxLength(10), phoneRegex },
+//             mail: { required, mailRegex },
+// addressNameCustomer: {},
+// addressCityCustomer: {},
+// postalCodeCustomer: {},
+// addressNameSite: {},
+// addressCitySite: {},
+// postalCodeSite: {},
+// comment: {},
+//         }
+
+//     },
+//     methods: {
+//         async submit() {
+//             this.v$.$validate() // checks all inputs
+//             if (!this.v$.$error) {
+//                 // if ANY fail validation
+//                 alert('Form successfully submitted.')
+//             } else {
+//                 alert('Form failed validation')
+//             }
+
+//         }
+
+//     }
+// }
 
 
 

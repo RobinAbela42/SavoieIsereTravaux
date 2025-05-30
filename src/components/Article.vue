@@ -3,7 +3,7 @@
 export default {
     props: {
         title: String,
-        imageString: String,
+        imageSrc: String,
         //true = image to the left
         direction: Boolean,
     }
@@ -14,7 +14,7 @@ export default {
 
 <template>
     <div :class="(direction ? 'imgArticleLeft' : 'imgArticleRight')" id="imgArticleContainer">
-        <img src="../assets/images/house-1.jpg" alt="" id="imgArticle" class="maxWidth">
+        <img :src="imageSrc" :alt="imageSrc" id="imgArticle" class="maxWidth">
     </div>
     <div id="tableBackground" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')" class="zindex-top"
         :class="(direction ? 'articleLeft' : 'articleRight textRight')">
@@ -47,7 +47,7 @@ export default {
                 <tr>
                     <td class="leftpadding">
                         <p class="justify white top">
-                            <slot /> 
+                            <slot />
                         </p>
                     </td>
                 </tr>
@@ -64,7 +64,7 @@ export default {
     z-index: 5;
 }
 
-.title{
+.title {
     font-size: 40px;
 }
 
@@ -74,7 +74,7 @@ h1 {
     font-size: 35px;
 }
 
-.white{
+.white {
     color: white;
 }
 
@@ -82,11 +82,12 @@ h1 {
     background-color: white;
 }
 
-.backgroud-green{
-  background-color: #19897e;
+.backgroud-green {
+    background-color: #19897e;
 }
-.backgroud-green{
-  background-color: #19897e;
+
+.backgroud-green {
+    background-color: #19897e;
 }
 
 .background-white * {
@@ -100,7 +101,7 @@ h1 {
 #imgArticle {
     object-fit: cover;
     height: 100%;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
 
 .bigArticleTable {
@@ -118,7 +119,7 @@ h1 {
 
 
 #tableBackground {
-  background-color: #19897e;
-    border-radius: 25px;
+    background-color: #19897e;
+    /* border-radius: 25px; */
 }
 </style>
