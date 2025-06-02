@@ -3,9 +3,9 @@ import 'vue3-carousel/carousel.css'
 import BigArticle from '@/components/Article.vue'
 import WhyUs from '@/components/WhyUs.vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-import works_image_1 from '@/assets/images/travaux-1.jpg'
+import works_image_1 from '@/assets/images/travaux-4.jpg'
 import works_image_2 from '@/assets/images/travaux-2.jpg'
-import works_image_3 from '@/assets/images/travaux-3.jpg'
+import works_image_3 from '@/assets/images/travaux-5.jpg'
 
 const carouselHomeConfig = {
 
@@ -328,7 +328,18 @@ const icons = [
 
             </article>
 
-            <div class="strip">
+            <div class="strip background-green">
+                <div class="stripLeft"><h1>Interlocuteur unique</h1><p>Sylvain Abela : 06 20 31 23 38  </p></div>
+                <div class="stripCenter"><img src="../assets/images/SIT-1-without-text.svg" alt="" id="logo"> <p>Savoie-Isère-Travaux</p></div>
+                <div class="stripRight">
+                    <RouterLink to="/quotation" id="projetPresentationButton"
+                        class="autowidth b-radius centerText hover">
+                        <div style="line-height: 10px;">
+                            <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
+                            <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre projet !</h3>
+                        </div>
+                    </RouterLink>
+                </div>
 
             </div>
 
@@ -369,13 +380,38 @@ const icons = [
     background-color: #242424;
 }
 
-.strip{
+.stripCenter {
+    position: relative;
+    width: 30%;
+
+}
+
+.stripLeft {
+    width: 30%;
+}
+
+.stripRight {
+    width: 30%;
+}
+
+
+.strip h1{
+    color: white;
+}
+
+.strip p{
+    color: white;
+}
+.strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 70vw;
-    height: 300px;
-    background-color: #19897e;
+    height: 250px;
     margin-left: 15vw;
     margin-top: 50px;
     margin-bottom: 100px;
+    padding-inline: 45px;
 }
 
 .orange {

@@ -16,8 +16,8 @@ export default {
     <div :class="(direction ? 'imgArticleLeft' : 'imgArticleRight')" id="imgArticleContainer">
         <img :src="imageSrc" :alt="imageSrc" id="imgArticle" class="maxWidth">
     </div>
-    <div id="tableBackground" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')" class="zindex-top"
-        :class="(direction ? 'articleLeft' : 'articleRight textRight')">
+    <div id="tableBackground" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')"
+        class="zindex-top backgroud-green" :class="(direction ? 'articleLeft' : 'articleRight textRight')">
 
         <table class="eras-book" id="bigArticleTable">
             <tbody class="">
@@ -82,13 +82,8 @@ h1 {
     background-color: white;
 }
 
-.backgroud-green {
-    background-color: #19897e;
-}
 
-.backgroud-green {
-    background-color: #19897e;
-}
+
 
 .background-white * {
     background-color: white;
@@ -119,7 +114,13 @@ h1 {
 
 
 #tableBackground {
-    background-color: #19897e;
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+            rgb(36, 100, 94) 0%,
+            rgb(126, 197, 190) 150%);
+
+    /* background:
+        radial-gradient(ellipse at top , rgb(126, 197, 190)),
+        radial-gradient(ellipse at  right rgb(1, 51, 46)); */
     /* border-radius: 25px; */
 }
 </style>

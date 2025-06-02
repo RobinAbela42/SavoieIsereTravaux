@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router';
   <header>
     <div id="headerContainer" class="littlePadding horizontal">
       <RouterLink to="/" id="logo1Container">
-        <img src="./assets/images/Logo-without-text-1.svg" alt="SIT_logo" id="logo-1">
+        <img src="./assets/images/SIT-1-without-text.svg" alt="SIT_logo" id="logo-1">
       </RouterLink>
       <div class="centerText">
         <h1>Savoie Isère travaux</h1>
@@ -46,7 +46,7 @@ import { RouterLink, RouterView } from 'vue-router';
     <table id="footerTable">
       <thead>
         <tr>
-          <td> © Copyright
+          <td colspan="9"> © Copyright
             <a href="https://www.flaticon.com/fr/icones-gratuites/centre-dappels" title="centre d'appels icônes">Centre
               d'appels
               icônes créées par Irfansusanto20 - Flaticon</a>
@@ -61,19 +61,14 @@ import { RouterLink, RouterView } from 'vue-router';
           <td>
             <RouterLink to="/">Home</RouterLink>
           </td>
-        </tr>
-        <tr>
-          <td>
-            <RouterLink to="/contact">Contact</RouterLink>
-          </td>
-
-        </tr>
-        <tr>
           <td>
             <RouterLink to="/quotation">Devis</RouterLink>
           </td>
-
+          <td>
+            <RouterLink to="/contact">Contact</RouterLink>
+          </td>
         </tr>
+
       </tbody>
     </table>
 
@@ -81,15 +76,16 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-
-#footerTable{
+#footerTable {
   width: 100%;
   color: white;
 }
-#footerTable tbody tr td *{
+
+#footerTable tbody tr td * {
 
   color: white;
 }
+
 #footerTable tbody tr td {
   padding: 15px;
   color: white;
@@ -167,7 +163,26 @@ footer {
 }
 
 
-
+footer table {
+  border-collapse: collapse;
+}
+footer table td {
+  border: 1px solid white;
+}
+footer table tr:first-child td{
+  border-top: 0;
+}
+footer table tr:last-child td {
+  border-bottom: 0;
+}
+footer table tr td:first-child,
+footer table tr th:first-child {
+  border-left: 0;
+}
+footer table tr td:last-child,
+footer table tr th:last-child {
+  border-right: 0;
+}
 
 
 .autowidth {
@@ -228,10 +243,6 @@ footer {
 }
 
 
-#logo-1 {
-  width: 100%;
-  height: 100%;
-}
 
 #contactButton {
   text-align: center;

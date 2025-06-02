@@ -9,19 +9,19 @@
 
             <label for="renovation" class="">
                 <!-- <label for="renovation" class="button formRadio"> -->
-                <input type="radio" id="renovation" name="workType" value="renovation">
+                <input type="radio" id="renovation" v-model="workType" value="renovation">
                 <label for="renovation">Rénovation</label>
             </label>
             <label for="fresh">
-                <input type="radio" id="fresh" name="workType" value="fresh">
+                <input type="radio" id="fresh" v-model="workType" value="fresh">
                 <label for="fresh">Neuf</label>
             </label>
             <label for="extention">
-                <input type="radio" id="extention" name="workType" value="extention">
+                <input type="radio" id="extention" v-model="workType" value="extention">
                 <label for="extention">Extention</label>
             </label>
             <label for="otherWorksType">
-                <input type="radio" id="otherWorksType" name="workType" value="otherWorksType">
+                <input type="radio" id="otherWorksType" v-model="workType" value="otherWorksType">
                 <label for="otherWorksType">Autre</label>
             </label>
         </div>
@@ -29,27 +29,27 @@
         <div id="worksParts">Votre projet concerne :
 
             <label for="plaster" class="">
-                <input type="checkbox" id="plaster" name="plaster">
+                <input type="checkbox" id="plaster" name="plaster" v-model="worksParts">
                 <label for="plaster">Plâterie</label>
             </label>
             <label for="tiling" class="">
-                <input type="checkbox" id="tiling" name="tiling">
+                <input type="checkbox" id="tiling" name="tiling" v-model="worksParts">
                 <label for="tiling">Carrelage</label>
             </label>
             <label for="electricity" class="">
-                <input type="checkbox" id="electricity" name="electricity">
+                <input type="checkbox" id="electricity" name="electricity" v-model="worksParts">
                 <label for="electricity">Carrelage</label>
             </label>
             <label for="plumbing" class="">
-                <input type="checkbox" id="plumbing" name="plumbing">
+                <input type="checkbox" id="plumbing" name="plumbing" v-model="worksParts">
                 <label for="plumbing">Plomberie</label>
             </label>
             <label for="masonery" class="">
-                <input type="checkbox" id="masonery" name="masonery">
+                <input type="checkbox" id="masonery" name="masonery" v-model="worksParts">
                 <label for="masonery">Maçonnerie</label>
             </label>
             <label for="roofing" class="">
-                <input type="checkbox" id="roofing" name="roofing">
+                <input type="checkbox" id="roofing" name="roofing" v-model="worksParts">
                 <label for="roofing">Toiture</label>
             </label>
         </div>
@@ -57,19 +57,19 @@
 
         <div id="worksCustomer">
             <div>
-                <input type="radio" id="owner" name="workCustomer" value="owner">
+                <input type="radio" id="owner" v-model="workCustomer" value="owner">
                 <label for="owner">Propriétaire</label>
             </div>
             <div>
-                <input type="radio" id="futureOwner" name="workCustomer" value="futureOwner">
+                <input type="radio" id="futureOwner" v-model="workCustomer" value="futureOwner">
                 <label for="futureOwner">Future propriétaire</label>
             </div>
             <div>
-                <input type="radio" id="landlord" name="workCustomer" value="landlord">
+                <input type="radio" id="landlord" v-model="workCustomer" value="landlord">
                 <label for="landlord">Propriétaire bailleur</label>
             </div>
             <div>
-                <input type="radio" id="renter" name="workCustomer" value="renter">
+                <input type="radio" id="renter" v-model="workCustomer" value="renter">
                 <label for="renter">Locataire</label>
             </div>
         </div>
@@ -77,19 +77,19 @@
 
         <div id="worksBuilding">
             <div>
-                <input type="radio" id="house" name="worksBuilding" value="house">
+                <input type="radio" id="house" v-model="worksBuilding" value="house">
                 <label for="house">Maison</label>
             </div>
             <div>
-                <input type="radio" id="appartment" name="worksBuilding" value="appartment">
+                <input type="radio" id="appartment" v-model="worksBuilding" value="appartment">
                 <label for="appartment">Appartement</label>
             </div>
             <div>
-                <input type="radio" id="commerce" name="worksBuilding" value="commerce">
+                <input type="radio" id="commerce" v-model="worksBuilding" value="commerce">
                 <label for="commerce">Commerce</label>
             </div>
             <div>
-                <input type="radio" id="otherBuilding" name="worksBuilding" value="otherBuilding">
+                <input type="radio" id="otherBuilding" v-model="worksBuilding" value="otherBuilding">
                 <label for="otherBuilding">Autre</label>
             </div>
         </div>
@@ -98,20 +98,30 @@
             <label for="name">Nom* :</label>
             <input type="text" v-model="name" id="name" autocomplete="name">
 
-            <p v-for="error of v$.name.$errors" :key="error.$uid">
-                <strong>{{ error.$validator }}</strong>
-                <small> on property</small>
-                <strong>{{ error.$property }}</strong>
-                <small> says:</small>
-                <strong>{{ error.$message }}</strong>
+            <p v-for="error of v$.name.$errors" :key="error.$uid" class="eras-book red">
+                {{ error.$message }}
             </p>
 
-            <label for="surname">Prénom* :</label>
+            <label for="surname">Prénom :</label>
             <input type="text" v-model="surname" id="surname">
+
+
+
             <label for="phone" required>Téléphone* :</label>
             <input type="text" v-model="phone" id="phone" autocomplete="mobile">
-            <label for="mail">Mail :</label>
+
+            <p v-for="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
+                {{ error.$message }}
+            </p>
+
+            <label for="mail">Mail* :</label>
             <input type="text" v-model="mail" id="mail" />
+
+            <p v-for="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
+                {{ error.$message }}
+            </p>
+
+
             <label for="addressName">Adresse :</label>
             <input v-model="addressNameCustomer" id="addressName">
             <label type="text" for="addressCity">Ville :</label>
@@ -119,7 +129,7 @@
             <label for="postalCode">Code postal :</label>
             <input type="number" v-model="postalCodeCustomer" id="postalCode">
 
-            <input type="checkbox" id="sameAddressCheckbox">
+            <input type="checkbox" id="sameAddressCheckbox" v-model="sameAddressCheckbox">
             <label for="sameAddressCheckbox">L'adresse du chantier est elle différentes ?</label>
 
             <label for="addressNameSite">Adresse du chantier :</label>
@@ -133,14 +143,15 @@
             <textarea v-model="comment" id="comment"></textarea>
         </div>
 
+        <div>
+            <input type="checkbox" name="contactBack">
+            <label for="contactBack">Voudriez-vous être contacté par un expert du bâtiment ?</label>
+        </div>
+
         <button @click="submitForm">Submit</button>
 
-        <p v-for="error of v$.$errors" :key="error.$uid">
-            <strong>{{ error.$validator }}</strong>
-            <small> on property</small>
-            <strong>{{ error.$property }}</strong>
-            <small> says:</small>
-            <strong>{{ error.$message }}</strong>
+        <p v-for="error of v$.$errors" :key="error.$uid" class="eras-book red">
+            {{ error.$message }}
         </p>
 
     </div>
@@ -151,12 +162,35 @@
 
 <script>
 import useVuelidate from '@vuelidate/core';
-import { maxLength, minLength, required, helpers } from '@vuelidate/validators'
+import { maxLength, minLength, required, helpers, sameAs } from '@vuelidate/validators'
 
 const mailRegex = helpers.regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)
-const phoneRegex = helpers.regex(/^[0-9]*$/)
+const phoneRegex = helpers.regex(/^[0-9 ]+$/)
 const textRegex = helpers.regex(/^[a-zA-Z]+$/)
 
+const name = "";
+const surname = "";
+const phone = "";
+const addressNameCustomer = "";
+const mail = "";
+const sameAddressCheckbox = "";
+const workType = [];
+const worksParts = [];
+const workCustomer = [];
+const worksBuilding = [];
+const addressCityCustomer = "";
+const postalCodeCustomer = "";
+const addressNameSite = "";
+const addressCitySite = "";
+const postalCodeSite = "";
+const comment = "";
+
+if(sameAddressCheckbox){
+    addressNameSite = addressNameCustomer
+    addressCitySite = addressCityCustomer;
+    postalCodeSite = postalCodeCustomer;
+
+}
 
 export default {
     setup() {
@@ -166,11 +200,16 @@ export default {
     },
     data() {
         return {
-            name: '',
+            name: "",
             surname: "",
             phone: "",
             addressNameCustomer: "",
             mail: "",
+            sameAddressCheckbox: "",
+            workType: [],
+            worksParts: [],
+            workCustomer: [],
+            worksBuilding: [],
             addressCityCustomer: "",
             postalCodeCustomer: "",
             addressNameSite: "",
@@ -181,10 +220,22 @@ export default {
     },
     validations() {
         return {
-            name: { required, textRegex },
-            surname: { required, textRegex },
-            phone: { required, minLength: minLength(10), maxLength: maxLength(10), phoneRegex },
-            mail: { required, mailRegex },
+            name: {
+                required: helpers.withMessage('Le nom est obligatoire.', required),
+                textRegex: helpers.withMessage('Le nom ne peut pas contenir de chiffres ou symboles.', textRegex)
+            },
+            surname: {},
+            phone: {
+                required: helpers.withMessage('Le numéro de téléphone est obligatoire.', required),
+                minLength: helpers.withMessage('Le numéro de téléphone doit au minimum faire 10 caractères.', minLength(10)),
+                // maxLength: helpers.withMessage('Le numéro de téléphone doit faire 10 caractères et doit être composé de chiffres uniquement.', maxLength(10)),
+                phoneRegex: helpers.withMessage('Le numéro de téléphone doit être composé de chiffres.', phoneRegex)
+            },
+            mail: { required: helpers.withMessage('Le mail est obligatoire.', required), mailRegex: helpers.withMessage('Le mail doit être renseigné au format : \'example@sample.ex\'.', mailRegex) },
+            workType: {},
+            worksParts: {},
+            workCustomer: {},
+            worksBuilding: {},
             addressNameCustomer: {},
             addressCityCustomer: {},
             postalCodeCustomer: {},
