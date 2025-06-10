@@ -53,7 +53,7 @@ const icons = [
 <template>
     <div id="globalContainer">
 
-        <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="true" :touch-drag="true"
+        <!-- <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="true" :touch-drag="true"
             :mouse-wheel="false" slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000
             wrap-around="">
             <Slide v-for="slide in slidesHome" :key="slide.id">
@@ -63,7 +63,7 @@ const icons = [
             <template #addons>
                 <Pagination />
             </template>
-        </Carousel>
+        </Carousel> -->
 
 
         <div id="subtitleRight">
@@ -408,7 +408,7 @@ const icons = [
     align-items: center;
     width: 70vw;
     height: 250px;
-    margin-left: 15vw;
+    margin-left: 10vw;
     margin-top: 50px;
     margin-bottom: 100px;
     padding-inline: 45px;
@@ -481,6 +481,7 @@ const icons = [
 
 .maxWidth {
     width: 100%;
+    
 }
 
 .halfWidth {
@@ -533,6 +534,7 @@ const icons = [
 }
 
 #globalContainer {
+    margin-top: -150px;
     display: flex;
     flex-direction: column;
 }
@@ -563,7 +565,6 @@ const icons = [
     text-align: center;
     border-radius: 20px;
     z-index: 5;
-    margin-top: -130px;
     margin-left: 50px;
     margin-bottom: 130px;
 }

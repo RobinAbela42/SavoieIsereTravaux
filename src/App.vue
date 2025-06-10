@@ -1,5 +1,21 @@
 <script setup>
+import 'vue3-carousel/carousel.css'
 import { RouterLink, RouterView } from 'vue-router';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
+
+const carouselHomeConfig = {
+
+  itemsToShow: 1,
+
+  height: 500,
+}
+
+const slidesHome = Array.from({ length: 4 }, (_, index) => ({
+  id: index + 1,
+  url: `../src/assets/images/artisan${index + 1}.jpg`,
+}))
+
 
 </script>
 
@@ -12,7 +28,8 @@ import { RouterLink, RouterView } from 'vue-router';
       <div class="centerText">
         <h1>Savoie Isère travaux</h1>
       </div>
-      <RouterLink to="/contact" id="contactButton" class="b-radius lightgreen hover">
+      <RouterLink to="/contact" id="contactButton" class="b-radius lightgreen hover"
+        v-if="!($route.path === '/contact')">
         Contact
       </RouterLink>
     </div>
@@ -21,20 +38,35 @@ import { RouterLink, RouterView } from 'vue-router';
     <div>
       <nav id="navigationHome" class="horizontal">
         <RouterLink to="/" class="centerText autowidth b-radius menu1">Home</RouterLink>
-        <RouterLink to="/quotation" class="centerText autowidth b-radius menu2">Demande de devis </RouterLink>
-        <a href="#secteur" class="centerText autowidth b-radius menu3 transition">Notre secteur</a>
+        <RouterLink to="/quotation" class="centerText autowidth b-radius menu2" v-if="!($route.path === '/quotation')">
+          Demande de devis </RouterLink>
+        <a href="#secteur" class="centerText autowidth b-radius menu3 transition"  v-if="$route.path==='/'">Notre secteur</a>
         <!-- <RouterLink to="#secteur" class="centerText autowidth b-radius menu3">Notre secteur</RouterLink> -->
-        <RouterLink to="/contact" class="centerText autowidth b-radius menu4">Contactez-nous </RouterLink>
+        <RouterLink to="/contact" class="centerText autowidth b-radius menu4" v-if="!($route.path === '/contact')">
+          Contactez-nous </RouterLink>
       </nav>
     </div>
 
-    <div id="projetPresentationContainer">
+    <div id="projetPresentationContainer" v-if="!($route.path === '/quotation')">
       <RouterLink to="/quotation" id="projetPresentationButton" class="autowidth b-radius centerText hover">
         <div style="line-height: 10px;">
           <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
           <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre projet !</h3>
         </div>
       </RouterLink>
+    </div>
+    <div class="carouselContainer">
+      <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="true" :touch-drag="true"
+        :mouse-wheel="false" slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
+        <Slide v-for="slide in slidesHome" :key="slide.id">
+          <img :src="slide.url" alt="image" class="maxWidth">
+        </Slide>
+
+        <template #addons>
+          <Pagination />
+        </template>
+      </Carousel>
+
     </div>
   </header>
 
@@ -92,7 +124,9 @@ import { RouterLink, RouterView } from 'vue-router';
 }
 
 
-
+.carouselContainer {
+  margin-top: -10px;
+}
 
 body {
 
@@ -104,9 +138,10 @@ body {
 main {
   display: flex;
   justify-content: center;
+  padding: 50px;
 }
 
-header {
+.headerContainer {
   height: 15vh;
 }
 
@@ -166,19 +201,24 @@ footer {
 footer table {
   border-collapse: collapse;
 }
+
 footer table td {
   border: 1px solid white;
 }
-footer table tr:first-child td{
+
+footer table tr:first-child td {
   border-top: 0;
 }
+
 footer table tr:last-child td {
   border-bottom: 0;
 }
+
 footer table tr td:first-child,
 footer table tr th:first-child {
   border-left: 0;
 }
+
 footer table tr td:last-child,
 footer table tr th:last-child {
   border-right: 0;
@@ -214,7 +254,7 @@ footer table tr th:last-child {
 }
 
 #headerContainer {
-
+  height: 15vh;
   align-items: center;
   justify-content: center;
 }

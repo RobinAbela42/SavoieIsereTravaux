@@ -33,6 +33,7 @@ a,
 .row {
   display: flex;
   flex-direction: row;
+  gap: 15px;
 }
 
 .column {
@@ -63,6 +64,13 @@ a,
 .articleLeft {
   margin: 10vh 10vw 10vh 40vw;
   padding: 25px;
+}
+
+.row-wrap{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
@@ -117,6 +125,14 @@ a,
 
 .red{
   color:red
+}
+
+.black{
+  color:black;
+}
+
+.white{
+  color:white;
 }
 
 .background-green {
