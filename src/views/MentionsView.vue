@@ -1,7 +1,9 @@
 <script></script>
 
 <template>
-    engagement
+
+    <h1>Mentions légales</h1>
+
 </template>
 
 <style></style>

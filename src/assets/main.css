@@ -19,16 +19,11 @@
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;
   padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
+
 
 .row {
   display: flex;
@@ -135,10 +130,21 @@ a,
   color:white;
 }
 
+.fillingImage{
+  width: 40vw;
+}
+
 .background-green {
       background-image: radial-gradient(farthest-corner at 40px 40px,
-            rgb(36, 100, 94) 0%,
-            rgb(126, 197, 190) 150%);
+            rgb(23, 75, 70) 0%,
+            rgb(159, 219, 213) 150%);
+}
+
+.background-orange{
+  background-color: orange;
+}
+.background-white{
+  background-color: white;
 }
 
 #logo-1 {

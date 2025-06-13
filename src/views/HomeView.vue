@@ -30,7 +30,8 @@ const slidesSplit = Array.from({ length: 4 }, (_, index) => ({
 const icons = [
     {
         url: `../src/assets/images/answering-phone.png`,
-        description: "Interlocuteur unique"
+        description: "Interlocuteur unique ",
+        title: "06 20 31 23 38"
     },
     {
         url: `../src/assets/images/headphone.png`,
@@ -53,24 +54,11 @@ const icons = [
 <template>
     <div id="globalContainer">
 
-        <!-- <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="true" :touch-drag="true"
-            :mouse-wheel="false" slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000
-            wrap-around="">
-            <Slide v-for="slide in slidesHome" :key="slide.id">
-                <img :src="slide.url" alt="image" class="maxWidth">
-            </Slide>
-
-            <template #addons>
-                <Pagination />
-            </template>
-        </Carousel> -->
-
-
         <div id="subtitleRight">
-            <h1 class="green">Regroupement d'artisans indépendants des métiers du bâtiment</h1>
+            <h1 class="green eras-book">Regroupement d'artisans indépendants <br> des métiers du bâtiment</h1>
         </div>
         <div id="subtitleLeft">
-            <h1 class="green">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
+            <h1 class="green eras-book">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
         </div>
 
 
@@ -99,7 +87,7 @@ const icons = [
 
 
 
-                        <WhyUs v-for="icon in icons" :title="icon.description">
+                        <WhyUs v-for="icon in icons" :title="icon.description" :description="icon.title">
                             <img :src="icon.url" alt="" class="icon b-radius background-orange">
                         </WhyUs>
                         <!-- <WhyUs title="Prestation de qualité">
@@ -119,17 +107,18 @@ const icons = [
                                     <h2>Effectuez votre demande de devis via le formulaire :</h2>
                                 </td>
                                 <td>
-                                    <div id="quotationButtonContainerWhyUs" class="contentRight">
-                                        <RouterLink to="/quotation" id="quotationButton"
-                                            class="autowidth  centerText hover ">
+                                    <div id="whyUsProjetPresentationContainer">
+
+                                        <RouterLink to="/quotation" id="projetPresentationButton"
+                                            class="autowidth b-radius centerText hover background-white">
                                             <div style="line-height: 10px;">
                                                 <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
                                                 <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre
-                                                    projet !
-                                                </h3>
+                                                    projet !</h3>
                                             </div>
                                         </RouterLink>
                                     </div>
+
                                 </td>
                             </tr>
                         </tbody>
@@ -184,7 +173,9 @@ const icons = [
                 <BigArticle title="Comment ça marche ? En 4 étapes :" :direction="false" :imageSrc="works_image_2">
                     <div style="font-size: 15px;">
                         <h2 class="eras-bold orange">1 - Contactez-nous</h2>
-                        <p class="eras-book leftpadding">Vous aurez un interlocuteur unique, le responsable travaux :
+                        <p class="eras-book leftpadding">Via le formulaire de demande de devis, où en appellant le 06 20
+                            31 23 38 :
+                            Vous aurez un interlocuteur unique, le responsable travaux :
                             Sylvain
                             Abela.</p>
                         <h2 class="eras-bold orange">2 - Prise de rendez-vous, évaluation de vos besoins</h2>
@@ -203,7 +194,8 @@ const icons = [
             </article>
 
             <div id="projetPresentationContainer">
-                <RouterLink to="/quotation" id="projetPresentationButton" class="autowidth b-radius centerText hover">
+                <RouterLink to="/quotation" id="projetPresentationButton"
+                    class="autowidth b-radius centerText background-orange hover">
                     <div style="line-height: 10px;">
                         <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
                         <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre projet !</h3>
@@ -228,9 +220,7 @@ const icons = [
                     <h1 class="green ">Nos engagements :</h1>
                     <p class="eras-book"> <span class="eras-bold">Rapidité : </span> Nous nous engageons à traiter votre
                         demande
-                        dans des délais clair et à partir du moment ou nous
-                        la
-                        recevons et celui ou vous ètes contacté.
+                        dans des délais très rapides.
                     </p>
                     <p class="eras-book"> <span class="eras-bold">Expérience : </span> Nous travaillons avec de bons
                         résultats
@@ -272,7 +262,7 @@ const icons = [
                     <p style="font-size: 15px;">
                         Nous sommes un collectif d'artisans passionnés, unis par une même volonté : valoriser le
                         savoir-faire
-                        local et proposer des prestations de qualité, authentiques et durables. Chacun d'entre nous est
+                        local et proposer des prestations durables et de qualité. Chacun d'entre nous est
                         spécialisé dans son métier — menuisier, électricien, plombier, peintre, maçon, carreleur, et
                         bien
                         d'autres encore — mais nous partageons tous la même exigence : le travail bien fait.<br /><br />
@@ -320,17 +310,22 @@ const icons = [
                     <h1 class="green ">Notre secteur :</h1>
                     <p class="eras-book"> Nous sommes basé aux alentours de Chambéry, nous pouvons donc intervenir dans
                         la
-                        plupart de la région Auvergne-Rhône-Alpes. </p>
-                    <p class="eras-book"> Nous sommes basé aux alentours de Chambéry, nous pouvons donc intervenir dans
-                        la
-                        plupart de la région Auvergne-Rhône-Alpes. </p>
+                        plupart de la région Rhône-Alpes. <br> 
+                        Nous sommes mobiles, nous pouvons nous déplaçer facilement.
+                    </p>
+                    <img src="../assets/images/artisan3.jpg" alt="" class="fillingImage">
                 </div>
 
             </article>
 
             <div class="strip background-green">
-                <div class="stripLeft"><h1>Interlocuteur unique</h1><p>Sylvain Abela : 06 20 31 23 38  </p></div>
-                <div class="stripCenter"><img src="../assets/images/SIT-1-without-text.svg" alt="" id="logo"> <p>Savoie-Isère-Travaux</p></div>
+                <div class="stripLeft">
+                    <h1>Interlocuteur unique</h1>
+                    <p>Sylvain Abela : 06 20 31 23 38 </p>
+                </div>
+                <div class="stripCenter"><img src="../assets/images/SIT-1-without-text.svg" alt="" id="logo">
+                    <p>Savoie-Isère-Travaux</p>
+                </div>
                 <div class="stripRight">
                     <RouterLink to="/quotation" id="projetPresentationButton"
                         class="autowidth b-radius centerText hover">
@@ -395,13 +390,14 @@ const icons = [
 }
 
 
-.strip h1{
+.strip h1 {
     color: white;
 }
 
-.strip p{
+.strip p {
     color: white;
 }
+
 .strip {
     display: flex;
     justify-content: space-between;
@@ -481,7 +477,7 @@ const icons = [
 
 .maxWidth {
     width: 100%;
-    
+
 }
 
 .halfWidth {
@@ -541,7 +537,7 @@ const icons = [
 
 #subtitleLeft {
     background-color: white;
-    width: 40vw;
+    width: 35vw;
     margin: 5px;
     text-align: center;
     border-radius: 20px;
@@ -554,12 +550,12 @@ const icons = [
 
 #subtitleLeft * {
 
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #subtitleRight {
     background-color: white;
-    width: 40vw;
+    width: 35vw;
     margin: 5px;
     height: 60px;
     text-align: center;
@@ -571,12 +567,13 @@ const icons = [
 
 #subtitleRight * {
 
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #homeArticle {
     margin-top: -60px;
 }
+
 
 #projetPresentationContainer {
     width: 300px;
@@ -591,7 +588,6 @@ const icons = [
     justify-content: center;
     display: flex;
     text-align: center;
-    background-color: orange;
     color: black;
     padding: 15px;
     border-radius: 250;

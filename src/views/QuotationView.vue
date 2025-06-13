@@ -4,7 +4,7 @@ import useVuelidate from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 
 const textRegex = helpers.regex(/^[A-Za-zÀ-ÿ\s\-']+$/)
-const phoneRegex = helpers.regex(/^[0-9]+$/)
+const phoneRegex = helpers.regex(/^[0-9 ]+$/)
 const mailRegex = helpers.regex(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
 
 const name = ref("")
@@ -102,232 +102,242 @@ const submitForm = async () => {
 
 <template>
 
-    <div id="main" class="background-green">
+    <div id="globalContainer">
 
-        <h2 class="white">Quel type de travaux ?</h2>
-        <div id="worksType" class="radioContainer row-wrap">
-            <!-- <div id="worksTypeCache" class="absolute formRadio button">
+
+        <div id="subtitleRight">
+            <h1 class="green eras-book">Regroupement d'artisans indépendants     <br> des métiers du bâtiment</h1>
+        </div>
+        <div id="subtitleLeft">
+            <h1 class="green eras-book">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
+        </div>
+
+        <div id="main" class="background-green">
+
+
+
+            <h2 class="white">Quel type de travaux ?</h2>
+            <div id="worksType" class="radioContainer row-wrap">
+                <!-- <div id="worksTypeCache" class="absolute formRadio button">
 
             </div> -->
 
-            <div>
-                <!-- <label for="renovation" class="button formRadio"> -->
-                <input type="radio" id="renovation" v-model="workType" value="renovation">
-                <label for="renovation">Rénovation</label>
+                <div>
+                    <!-- <label for="renovation" class="button formRadio"> -->
+                    <input type="radio" id="renovation" v-model="workType" value="renovation">
+                    <label for="renovation">Rénovation</label>
+                </div>
+                <div>
+                    <input type="radio" id="fresh" v-model="workType" value="fresh">
+                    <label for="fresh">Neuf</label>
+                </div>
+                <div>
+                    <input type="radio" id="extention" v-model="workType" value="extention">
+                    <label for="extention">Extention</label>
+                </div>
+                <div>
+                    <input type="radio" id="otherWorksType" v-model="workType" value="otherWorksType">
+                    <label for="otherWorksType">Autre</label>
+                </div>
             </div>
-            <div>
-                <input type="radio" id="fresh" v-model="workType" value="fresh">
-                <label for="fresh">Neuf</label>
-            </div>
-            <div>
-                <input type="radio" id="extention" v-model="workType" value="extention">
-                <label for="extention">Extention</label>
-            </div>
-            <div>
-                <input type="radio" id="otherWorksType" v-model="workType" value="otherWorksType">
-                <label for="otherWorksType">Autre</label>
-            </div>
-        </div>
-        <h2 class="white">Votre projet concerne :</h2>
-        <div id="worksParts" class="row-wrap checkboxContainer">
+            <h2 class="white">Votre projet concerne :</h2>
+            <div id="worksParts" class="row-wrap checkboxContainer">
 
-            <div>
-                <input type="checkbox" id="plaster" value="Plaster" v-model="worksParts">
-                <label for="plaster">Plâterie</label>
+                <div>
+                    <input type="checkbox" id="plaster" value="Plaster" v-model="worksParts">
+                    <label for="plaster">Plâterie</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="tiling" value="Tiling" v-model="worksParts">
+                    <label for="tiling">Carrelage</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="electricity" value="Electricity" v-model="worksParts">
+                    <label for="electricity">Électricité</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="plumbing" value="Plumbing" v-model="worksParts">
+                    <label for="plumbing">Plomberie</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="masonery" value="Masonery" v-model="worksParts">
+                    <label for="masonery">Maçonnerie</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="roofing" value="Roofing" v-model="worksParts">
+                    <label for="roofing">Toiture</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="otherParts" value="OtherParts" v-model="worksParts">
+                    <label for="otherParts">Autre</label>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" id="tiling" value="Tiling" v-model="worksParts">
-                <label for="tiling">Carrelage</label>
-            </div>
-            <div>
-                <input type="checkbox" id="electricity" value="Electricity" v-model="worksParts">
-                <label for="electricity">Électricité</label>
-            </div>
-            <div>
-                <input type="checkbox" id="plumbing" value="Plumbing" v-model="worksParts">
-                <label for="plumbing">Plomberie</label>
-            </div>
-            <div>
-                <input type="checkbox" id="masonery" value="Masonery" v-model="worksParts">
-                <label for="masonery">Maçonnerie</label>
-            </div>
-            <div>
-                <input type="checkbox" id="roofing" value="Roofing" v-model="worksParts">
-                <label for="roofing">Toiture</label>
-            </div>
-            <div>
-                <input type="checkbox" id="otherParts" value="OtherParts" v-model="worksParts">
-                <label for="otherParts">Autre</label>
-            </div>
-        </div>
 
-        <h2 class="white">Vous êtes :</h2>
+            <h2 class="white">Vous êtes :</h2>
 
-        <div id="worksCustomer" class="radioContainer row-wrap">
-            <div>
-                <input type="radio" id="owner" v-model="workCustomer" value="owner">
-                <label for="owner">Propriétaire</label>
+            <div id="worksCustomer" class="radioContainer row-wrap">
+                <div>
+                    <input type="radio" id="owner" v-model="workCustomer" value="owner">
+                    <label for="owner">Propriétaire</label>
+                </div>
+                <div>
+                    <input type="radio" id="futureOwner" v-model="workCustomer" value="futureOwner">
+                    <label for="futureOwner">Future propriétaire</label>
+                </div>
+                <div>
+                    <input type="radio" id="landlord" v-model="workCustomer" value="landlord">
+                    <label for="landlord">Propriétaire bailleur</label>
+                </div>
+                <div>
+                    <input type="radio" id="renter" v-model="workCustomer" value="renter">
+                    <label for="renter">Locataire</label>
+                </div>
+                <div>
+                    <input type="radio" id="otherCustomer" v-model="workCustomer" value="otherCustomer">
+                    <label for="otherCustomer">Autre </label>
+                </div>
             </div>
-            <div>
-                <input type="radio" id="futureOwner" v-model="workCustomer" value="futureOwner">
-                <label for="futureOwner">Future propriétaire</label>
-            </div>
-            <div>
-                <input type="radio" id="landlord" v-model="workCustomer" value="landlord">
-                <label for="landlord">Propriétaire bailleur</label>
-            </div>
-            <div>
-                <input type="radio" id="renter" v-model="workCustomer" value="renter">
-                <label for="renter">Locataire</label>
-            </div>
-            <div>
-                <input type="radio" id="otherCustomer" v-model="workCustomer" value="otherCustomer">
-                <label for="otherCustomer">Autre </label>
-            </div>
-        </div>
 
-        <h2 class="white">Vous possédez un(e):</h2>
+            <h2 class="white">Il s'agit de :</h2>
 
-        <div id="worksBuilding" class="radioContainer row-wrap">
-            <div>
-                <input type="radio" id="house" v-model="worksBuilding" value="house">
-                <label for="house">Maison</label>
+            <div id="worksBuilding" class="radioContainer row-wrap">
+                <div>
+                    <input type="radio" id="house" v-model="worksBuilding" value="house">
+                    <label for="house">Maison</label>
+                </div>
+                <div>
+                    <input type="radio" id="appartment" v-model="worksBuilding" value="appartment">
+                    <label for="appartment">Appartement</label>
+                </div>
+                <div>
+                    <input type="radio" id="commerce" v-model="worksBuilding" value="commerce">
+                    <label for="commerce">Commerce</label>
+                </div>
+                <div>
+                    <input type="radio" id="otherBuilding" v-model="worksBuilding" value="otherBuilding">
+                    <label for="otherBuilding">Autre</label>
+                </div>
             </div>
-            <div>
-                <input type="radio" id="appartment" v-model="worksBuilding" value="appartment">
-                <label for="appartment">Appartement</label>
-            </div>
-            <div>
-                <input type="radio" id="commerce" v-model="worksBuilding" value="commerce">
-                <label for="commerce">Commerce</label>
-            </div>
-            <div>
-                <input type="radio" id="otherBuilding" v-model="worksBuilding" value="otherBuilding">
-                <label for="otherBuilding">Autre</label>
-            </div>
-        </div>
 
-        <h2 class="white">Informations personnelles :</h2>
+            <h2 class="white">Informations personnelles :</h2>
 
-        <div id="">
+            <div id="">
 
-            <div class="row">
+                <div class="row">
 
 
-                <div class="inputContainer">
-                    <input type="text" v-model="name" id="name" autocomplete="name" placeholder="" class="field">
-                    <label for="name">Nom* :</label>
+                    <div class="inputContainer">
+                        <input type="text" v-model="name" id="name" autocomplete="name" placeholder="" class="field">
+                        <label for="name">Nom* :</label>
+
+                    </div>
+
+                    <p v-for="error of v$.name.$errors" :key="error.$uid" class="eras-book red">
+                        {{ error.$message }}
+                    </p>
+                    <div class="inputContainer">
+
+                        <input type="text" v-mod el="surname" id="surname" placeholder="" class="field">
+                        <label for="surname">Prénom :</label>
+
+                    </div>
 
                 </div>
 
-                <p v-for="error of v$.name.$errors" :key="error.$uid" class="eras-book red">
+                <div class="inputContainer">
+
+                    <input type="text" v-model="phone" id="phone" autocomplete="mobile" placeholder="" class="field">
+                    <label for="phone" required>Téléphone* :</label>
+
+                </div>
+
+                <p v-for="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
                     {{ error.$message }}
                 </p>
+
                 <div class="inputContainer">
 
-                    <input type="text" v-mod el="surname" id="surname" placeholder="" class="field">
-                    <label for="surname">Prénom :</label>
+                    <input type="text" v-model="mail" id="mail" placeholder="" class="field">
+                    <label for="mail">Mail* :</label>
 
                 </div>
 
-            </div>
 
-            <div class="inputContainer">
+                <p v-for="error of v$.mail.$errors" :key="error.$uid" class="eras-book red">
+                    {{ error.$message }}
+                </p>
 
-                <input type="text" v-model="phone" id="phone" autocomplete="mobile" placeholder="" class="field">
-                <label for="phone" required>Téléphone* :</label>
+                <div class="inputContainer">
+                    <input v-model="addressNameCustomer" id="addressName" placeholder="" class="field">
+                    <label for="addressName">Adresse :</label>
 
-            </div>
+                </div>
 
-            <p v-for="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
-                {{ error.$message }}
-            </p>
+                <div class="inputContainer">
 
-            <div class="inputContainer">
+                    <input placeholder="" class="field" type="text" v-model="addressCityCustomer" id="addressCity">
+                    <label type="text" for="addressCity">Ville :</label>
 
-                <input type="text" v-model="mail" id="mail" placeholder="" class="field">
-                <label for="mail">Mail* :</label>
+                </div>
 
-            </div>
+                <div class="inputContainer">
 
+                    <input placeholder="" class="field" type="number" v-model="postalCodeCustomer" id="postalCode">
+                    <label for="postalCode">Code postal :</label>
 
-            <p v-for="error of v$.mail.$errors" :key="error.$uid" class="eras-book red">
-                {{ error.$message }}
-            </p>
+                </div>
 
-            <div class="inputContainer">
-                <input v-model="addressNameCustomer" id="addressName" placeholder="" class="field">
-                <label for="addressName">Adresse :</label>
+                <div class="singleCheckbox">
 
-            </div>
+                    <input type="checkbox" id="sameAddressCheckbox" v-model="sameAddressCheckbox">
+                    <label for="sameAddressCheckbox">L'adresse du chantier est elle différentes ?</label>
+                </div>
 
-            <div class="inputContainer">
+                <div class="inputContainer">
 
-                <input placeholder="" class="field" type="text" v-model="addressCityCustomer" id="addressCity">
-                <label type="text" for="addressCity">Ville :</label>
+                    <input placeholder="" class="field" type="text" v-model="addressNameSite" id="addressNameSite"
+                        :disabled="sameAddressCheckbox">
+                    <label for="addressNameSite">Adresse du chantier :</label>
 
-            </div>
+                </div>
 
-            <div class="inputContainer">
+                <div class="inputContainer">
 
-                <input placeholder="" class="field" type="number" v-model="postalCodeCustomer" id="postalCode">
-                <label for="postalCode">Code postal :</label>
+                    <input placeholder="" class="field" type="text" v-model="addressCitySite" id="addressCitySite"
+                        :disabled="sameAddressCheckbox">
+                    <label for="addressCitySite">Ville du chantier :</label>
+
+                </div>
+
+                <div class="inputContainer">
+
+                    <input placeholder="" class="field" type="number" v-model="postalCodeSite" id="postalCodeSite"
+                        :disabled="sameAddressCheckbox">
+                    <label for="postalCodeSite" :disabled="true">Code postal du chantier :</label>
+
+                </div>
+
+                <div class="inputContainer">
+
+                    <textarea placeholder="" class="field " v-model="comment" id="comment"></textarea>
+                    <label for="comment">Décrivez nous votre chantier !</label>
+
+                </div>
 
             </div>
 
             <div class="singleCheckbox">
-
-                <input type="checkbox" id="sameAddressCheckbox" v-model="sameAddressCheckbox">
-                <label for="sameAddressCheckbox">L'adresse du chantier est elle différentes ?</label>
+                <input type="checkbox" name="contactBack" id="contactBack" v-model="contactBackCheckbox">
+                <label for="contactBack">Je souhaite être recontacté rapidement</label>
             </div>
 
-            <div class="inputContainer">
+            <button @click="submitForm" class="quotationSubmit eras-bold">Envoyer</button>
 
-                <input placeholder="" class="field" type="text" v-model="addressNameSite" id="addressNameSite"
-                    :disabled="sameAddressCheckbox">
-                <label for="addressNameSite">Adresse du chantier :</label>
-
-            </div>
-
-            <div class="inputContainer">
-
-                <input placeholder="" class="field" type="text" v-model="addressCitySite" id="addressCitySite"
-                    :disabled="sameAddressCheckbox">
-                <label for="addressCitySite">Ville du chantier :</label>
-
-            </div>
-
-            <div class="inputContainer">
-
-                <input placeholder="" class="field" type="number" v-model="postalCodeSite" id="postalCodeSite"
-                    :disabled="sameAddressCheckbox">
-                <label for="postalCodeSite" :disabled="true">Code postal du chantier :</label>
-
-            </div>
-
-            <div class="inputContainer">
-
-                <textarea placeholder="" class="field " v-model="comment" id="comment"></textarea>
-                <label for="comment">Décrivez nous votre chantier !</label>
-
-            </div>
+            <p v-for="error of v$.$errors" :key="error.$uid" class="eras-book red">
+                {{ error.$message }}
+            </p>
 
         </div>
-
-        <div class="singleCheckbox">
-            <input type="checkbox" name="contactBack" id="contactBack" v-model="contactBackCheckbox">
-            <label for="contactBack">Voudriez-vous être contacté par un expert du bâtiment ?</label>
-        </div>
-
-        <button @click="submitForm" class="quotationSubmit eras-bold">Envoyer</button>
-
-        <p v-for="error of v$.$errors" :key="error.$uid" class="eras-book red">
-            {{ error.$message }}
-        </p>
-
-    </div>
-
-    <div>
     </div>
 </template>
 
@@ -337,10 +347,12 @@ const submitForm = async () => {
 #main {
     padding: 50px 50px;
     display: flex;
+    align-self: center;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    width: 60vw;
 }
 
 .buttonForm {

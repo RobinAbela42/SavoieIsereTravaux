@@ -40,51 +40,60 @@ const sendContactMail = async () => {
 
 <template>
 
+    <div id="globalContainer">
 
 
-    <div id="contactFormContainer">
-        <h1>Contactez-nous !</h1>
-        <div id="contactFormName">
+        <div id="subtitleRight">
+            <h1 class="green eras-book">Regroupement d'artisans indépendants  <br> des métiers du bâtiment</h1>
+        </div>
+        <div id="subtitleLeft">
+            <h1 class="green eras-book">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
+        </div>
 
-            <div class="inputContainer">
-                <input type="text" id="name" v-model="nameContact" placeholder="" class="field eras-book" />
-                <label for="name" class="eras-book ">Nom</label>
+        <div id="contactFormContainer">
+            <h1>Contactez-nous !</h1>
+            <div id="contactFormName">
+
+                <div class="inputContainer">
+                    <input type="text" id="name" v-model="nameContact" placeholder="" class="field eras-book" />
+                    <label for="name" class="eras-book ">Nom</label>
+                </div>
+                <div class="inputContainer">
+                    <input type="text" id="mail" v-model="mailContact" placeholder="" class="field eras-book">
+                    <label for="mail" class="eras-book ">Mail*</label>
+                    <p v-for="error of v$contactForm.mailContact.$errors" :key="error.$uid" class="eras-book red">
+                        {{ error.$message }}
+                    </p>
+                </div>
             </div>
+
             <div class="inputContainer">
-                <input type="text" id="mail" v-model="mailContact" placeholder="" class="field eras-book">
-                <label for="mail" class="eras-book ">Mail*</label>
-                <p v-for="error of v$contactForm.mailContact.$errors" :key="error.$uid" class="eras-book red">
+                <input type="text" id="object" v-model="objectContact" placeholder="" class="field eras-book">
+                <label for="object" class="eras-book ">Objet</label>
+            </div>
+
+            <div class="inputContainer">
+                <textarea id="content" class="field eras-book" placeholder="" v-model="contentContact"></textarea>
+                <label for="content" class="eras-book">Contenu du mail*</label>
+                <p v-for="error of v$contactForm.contentContact.$errors" :key="error.$uid" class="eras-book red">
                     {{ error.$message }}
                 </p>
             </div>
+            <div class="buttonContainer">
+
+                <button @click="sendContactMail" class="eras-book">Envoyer</button>
+
+            </div>
         </div>
 
-        <div class="inputContainer">
-            <input type="text" id="object" v-model="objectContact" placeholder="" class="field eras-book">
-            <label for="object" class="eras-book ">Objet</label>
-        </div>
-
-        <div class="inputContainer">
-            <textarea id="content" class="field eras-book" placeholder="" v-model="contentContact"></textarea>
-            <label for="content" class="eras-book">Contenu du mail*</label>
-            <p v-for="error of v$contactForm.contentContact.$errors" :key="error.$uid" class="eras-book red">
-                {{ error.$message }}
-            </p>
-        </div>
-        <div class="buttonContainer">
-
-            <button @click="sendContactMail" class="eras-book">Envoyer</button>
-
-        </div>
     </div>
-
-
 
 
 </template>
 
 <style>
 #contactFormContainer .inputContainer {
+
     display: flex;
     position: relative;
     width: 100%;
@@ -92,6 +101,7 @@ const sendContactMail = async () => {
 }
 
 #contactFormContainer {
+    align-self: center;
     color: white;
 }
 
@@ -174,10 +184,12 @@ const sendContactMail = async () => {
     display: flex;
     flex-direction: row;
 }
-#contactFormName .inputContainer:first-child     {
+
+#contactFormName .inputContainer:first-child {
     padding-right: 15px;
 }
-#contactFormName .inputContainer:last-child     {
+
+#contactFormName .inputContainer:last-child {
     padding-left: 15px;
 }
 </style>

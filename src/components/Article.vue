@@ -16,8 +16,8 @@ export default {
     <div :class="(direction ? 'imgArticleLeft' : 'imgArticleRight')" id="imgArticleContainer">
         <img :src="imageSrc" :alt="imageSrc" id="imgArticle" class="maxWidth">
     </div>
-    <div id="tableBackground" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')"
-        class="zindex-top backgroud-green" :class="(direction ? 'articleLeft' : 'articleRight textRight')">
+    <div id="" :id="(direction ? 'tableBackgroundLeft' : 'tableBackgroundRight')"
+        class="zindex-top background-green" :class="(direction ? 'articleLeft' : 'articleRight textRight')">
 
         <table class="eras-book" id="bigArticleTable">
             <tbody class="">

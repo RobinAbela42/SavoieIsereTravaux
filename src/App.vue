@@ -40,7 +40,8 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
         <RouterLink to="/" class="centerText autowidth b-radius menu1">Home</RouterLink>
         <RouterLink to="/quotation" class="centerText autowidth b-radius menu2" v-if="!($route.path === '/quotation')">
           Demande de devis </RouterLink>
-        <a href="#secteur" class="centerText autowidth b-radius menu3 transition"  v-if="$route.path==='/'">Notre secteur</a>
+        <a href="#secteur" class="centerText autowidth b-radius menu3 transition" v-if="$route.path === '/'">Notre
+          secteur</a>
         <!-- <RouterLink to="#secteur" class="centerText autowidth b-radius menu3">Notre secteur</RouterLink> -->
         <RouterLink to="/contact" class="centerText autowidth b-radius menu4" v-if="!($route.path === '/contact')">
           Contactez-nous </RouterLink>
@@ -88,16 +89,32 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
           </td>
         </tr>
       </thead>
+
       <tbody>
         <tr>
           <td>
             <RouterLink to="/">Home</RouterLink>
           </td>
           <td>
+            <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <RouterLink to="/quotation">Devis</RouterLink>
           </td>
           <td>
+            <RouterLink to="/politiquedeconfidentialite">Politique de confidentialité</RouterLink>
+          </td>
+
+        </tr>
+        <tr>
+
+          <td>
             <RouterLink to="/contact">Contact</RouterLink>
+          </td>
+          <td>
+
           </td>
         </tr>
 
@@ -137,7 +154,8 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+
   padding: 50px;
 }
 
@@ -202,7 +220,7 @@ footer table {
   border-collapse: collapse;
 }
 
-footer table td {
+/* footer table td {
   border: 1px solid white;
 }
 
@@ -222,7 +240,7 @@ footer table tr th:first-child {
 footer table tr td:last-child,
 footer table tr th:last-child {
   border-right: 0;
-}
+} */
 
 
 .autowidth {
