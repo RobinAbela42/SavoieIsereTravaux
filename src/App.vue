@@ -16,6 +16,12 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
   url: `../src/assets/images/artisan${index + 1}.jpg`,
 }))
 
+function scrollToSection() {
+  const section = document.getElementById('secteur')
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 </script>
 
@@ -29,7 +35,7 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
         <h1>Savoie Isère travaux</h1>
       </div>
       <RouterLink to="/contact" id="contactButton" class="b-radius lightgreen hover"
-        v-if="!($route.path === '/contact')">
+        :class="($route.path === '/contact') ? 'hide' : 'show'">
         Contact
       </RouterLink>
     </div>
@@ -40,7 +46,8 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
         <RouterLink to="/" class="centerText autowidth b-radius menu1">Home</RouterLink>
         <RouterLink to="/quotation" class="centerText autowidth b-radius menu2" v-if="!($route.path === '/quotation')">
           Demande de devis </RouterLink>
-        <a href="#secteur" class="centerText autowidth b-radius menu3 transition" v-if="$route.path === '/'">Notre
+        <a @click.prevent="scrollToSection" class="centerText autowidth b-radius menu3 transition"
+          v-if="$route.path === '/'">Notre
           secteur</a>
         <!-- <RouterLink to="#secteur" class="centerText autowidth b-radius menu3">Notre secteur</RouterLink> -->
         <RouterLink to="/contact" class="centerText autowidth b-radius menu4" v-if="!($route.path === '/contact')">
@@ -57,7 +64,7 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
       </RouterLink>
     </div>
     <div class="carouselContainer">
-      <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="true" :mouse-drag="true" :touch-drag="true"
+      <Carousel v-bind="carouselHomeConfig" :pause-autoplay-on-hover="false" :mouse-drag="true" :touch-drag="true"
         :mouse-wheel="false" slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
         <Slide v-for="slide in slidesHome" :key="slide.id">
           <img :src="slide.url" alt="image" class="maxWidth">
@@ -65,8 +72,11 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
 
         <template #addons>
           <Pagination />
+          <!-- <Navigation /> -->
         </template>
       </Carousel>
+
+
 
     </div>
   </header>
@@ -139,6 +149,8 @@ const slidesHome = Array.from({ length: 4 }, (_, index) => ({
   padding: 15px;
   color: white;
 }
+
+
 
 
 .carouselContainer {
@@ -249,6 +261,7 @@ footer table tr th:last-child {
 }
 
 
+
 .centerText {
   text-align: center;
 }
@@ -266,8 +279,8 @@ footer table tr th:last-child {
   background-color: #19897e;
   color: white;
   margin: 10px;
-  height: 5vw;
-  width: 5vw;
+  height: 80px;
+  width: 80px;
   border-radius: 250;
 }
 

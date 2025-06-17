@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import 'vue3-carousel/carousel.css'
 import BigArticle from '@/components/Article.vue'
 import WhyUs from '@/components/WhyUs.vue'
@@ -47,7 +48,26 @@ const icons = [
     },
 ]
 
+const showButton = ref(false)
 
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
+
+function handleScroll() {
+  showButton.value = window.scrollY > 200
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 </script>
 
@@ -67,9 +87,7 @@ const icons = [
         <section id="homeArticle">
             <div class="littleText">
                 <p class=" contentCentered grey eras-book italic">Besoin d'une prise ene charge ou d'accompagnement pour
-                    vos
-                    travaux
-                    ?</p>
+                    vos travaux ?</p>
             </div>
             <div class="bigText">
                 <p class=" contentCentered green eras-bold">Devis pour vos travaux : pourquoi Savoie Isère Travaux ?</p>
@@ -90,15 +108,6 @@ const icons = [
                         <WhyUs v-for="icon in icons" :title="icon.description" :description="icon.title">
                             <img :src="icon.url" alt="" class="icon b-radius background-orange">
                         </WhyUs>
-                        <!-- <WhyUs title="Prestation de qualité">
-                            <img src="../assets/images/hand-shake.png" alt="" class="icon b-radius">
-                        </WhyUs>
-                        <WhyUs title="À l'écoute">
-                            <img src="../assets/images/headphone.png" alt="" class="icon b-radius">
-                        </WhyUs>
-                        <WhyUs title="Devis chiffré et précis">
-                            <img src="../assets/images/papersheet.png" alt="" class="icon b-radius">
-                        </WhyUs> -->
                     </div>
                     <table id="whyUsTableButton">
                         <tbody>
@@ -111,9 +120,13 @@ const icons = [
 
                                         <RouterLink to="/quotation" id="projetPresentationButton"
                                             class="autowidth b-radius centerText hover background-white">
-                                            <div style="line-height: 10px;">
-                                                <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
-                                                <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre
+                                            <div style="line-height: 20px; background-color: transparent;">
+                                                <h2 class="eras-bold"
+                                                    style="font-size: 25px; background-color: transparent;">Demande de
+                                                    devis</h2>
+                                                <h3 class="eras-book"
+                                                    style="font-size: 15px; background-color: transparent;">Présentez
+                                                    nous votre
                                                     projet !</h3>
                                             </div>
                                         </RouterLink>
@@ -136,8 +149,9 @@ const icons = [
 
             <div class="splittedSection">
 
-                <Carousel v-bind="carouselHomeConfig" :mouse-drag="false" :touch-drag="false" :mouse-wheel="false"
-                    slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
+                <Carousel v-bind="carouselHomeConfig" :mouse-drag="false" :touch-drag="false"
+                    :pause-autoplay-on-hover="false" :mouse-wheel="false" slide-effect="fade" :transition="1500"
+                    style="z-index: 0" :autoplay=2000 wrap-around="">
                     <Slide v-for="slide in slidesSplit" :key="slide.id">
                         <img :src="slide.url" alt="image" class="halfWidth">
                     </Slide>
@@ -246,7 +260,8 @@ const icons = [
                     </p>
                 </div>
                 <Carousel v-bind="carouselHomeConfig" :mouse-drag="false" :touch-drag="false" :mouse-wheel="false"
-                    slide-effect="fade" :transition="1500" style="z-index: 0" :autoplay=2000 wrap-around="">
+                    :pause-autoplay-on-hover="false" slide-effect="fade" :transition="1500" style="z-index: 0"
+                    :autoplay=2000 wrap-around="">
                     <Slide v-for="slide in slidesSplit" :key="slide.id">
                         <img :src="slide.url" alt="image" class="halfWidth">
                     </Slide>
@@ -281,28 +296,6 @@ const icons = [
                 </BigArticle>
 
             </article>
-            <!-- <article class="bigArticle" id="firstSection">
-                <BigArticle title="Nos engagements :" :direction="false">
-                    <h2></h2>
-                    <p></p>
-                    <h2>Expérience</h2>
-                    <p>Nous travaillons avec de bons résultats depuis de nombreuses années, nous vous feront profiter de
-                        notre
-                        expérience. Nous collaborons avec tous les corps de métier présent sur le chantier.</p>
-                    <h2>Compétence</h2>
-                    <p>Nous sommes tous des professionnels du bâtiment, nos formations, nos expériences, vous
-                        garantiront le bon
-                        déroulement du chantier jusqu'a sa réception.</p>
-                    <h2>Tarifs</h2>
-                    <p>Nous vous proposons des prix étudiés et compétitfs. Nos devis sont clairs et détaillés.</p>
-                    <h2>Disponibilité</h2>
-                    <p>nous restons disponible, pour tout chantier ouvert. Nous sommes facilement joignable, nous vous
-                        tenons
-                        informé pendant la durée des travaux.</p>
-                </BigArticle>
-
-            </article> -->
-
             <article id="secteur" class="splittedSection">
 
                 <img src="../assets/images/zone-geographique.png" alt="image" class="halfWidth">
@@ -310,7 +303,7 @@ const icons = [
                     <h1 class="green ">Notre secteur :</h1>
                     <p class="eras-book"> Nous sommes basé aux alentours de Chambéry, nous pouvons donc intervenir dans
                         la
-                        plupart de la région Rhône-Alpes. <br> 
+                        plupart de la région Rhône-Alpes. <br>
                         Nous sommes mobiles, nous pouvons nous déplaçer facilement.
                     </p>
                     <img src="../assets/images/artisan3.jpg" alt="" class="fillingImage">
@@ -338,41 +331,42 @@ const icons = [
 
             </div>
 
-            <!-- <article class="contentCentered column" id="articleServices">
-                <h2 class="white" style="font-size: 35px;">Nos services :</h2>
-
-                <p class="white eras-book" style="font-size: 15px;">
-
-
-                    Nous prenons vos devis et projet de construction, quel que soit le domaine de compétence requis.
-                    Vous
-                    serez mis
-                    en relation rapidement avec un expert du bâtiment, Sylvain Abéla, qui sera là pour prendre en charge
-                    toute vos
-                    demandes.
-                </p>
-
-                <div id="quotationButtonContainer" class="contentCentered ">
-                    <RouterLink to="/quotation" id="quotationButton" class="autowidth  centerText hover ">
-                        <div style="line-height: 10px;">
-                            <h2 class="eras-bold" style="font-size: 25px;">Demande de devis</h2>
-                            <h3 class="eras-book" style="font-size: 15px;">Présentez nous votre projet !</h3>
-                        </div>
-                    </RouterLink>
-                </div>
-
-
-            </article> -->
 
 
         </section>
     </div>
+
+    <a class="scrollToTopButton b-radius background-green hover transition" :class="showButton? 'scaleShow':'scaleHide' " @click="scrollToTop">&#8593;</a>
 
 </template>
 
 <style>
 :root {
     background-color: #242424;
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+.scaleShow{
+    transform: scale(1);
+}
+.scaleHide{
+    transform: scale(0);
+}
+
+.scrollToTopButton {
+    position: fixed;
+    right: 35px;
+    bottom: 35px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: white;
 }
 
 .stripCenter {

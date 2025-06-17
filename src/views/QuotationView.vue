@@ -106,7 +106,7 @@ const submitForm = async () => {
 
 
         <div id="subtitleRight">
-            <h1 class="green eras-book">Regroupement d'artisans indépendants     <br> des métiers du bâtiment</h1>
+            <h1 class="green eras-book">Regroupement d'artisans indépendants <br> des métiers du bâtiment</h1>
         </div>
         <div id="subtitleLeft">
             <h1 class="green eras-book">Un interlocuteur unique : Sylvain Abela <br>06 20 31 23 38</h1>
@@ -232,17 +232,17 @@ const submitForm = async () => {
 
                     </div>
 
-                    <p v-for="error of v$.name.$errors" :key="error.$uid" class="eras-book red">
-                        {{ error.$message }}
-                    </p>
                     <div class="inputContainer">
 
                         <input type="text" v-mod el="surname" id="surname" placeholder="" class="field">
                         <label for="surname">Prénom :</label>
 
                     </div>
-
                 </div>
+
+                <p v-for="error of v$.name.$errors" :key="error.$uid" class="eras-book red">
+                    {{ error.$message }}
+                </p>
 
                 <div class="inputContainer">
 
@@ -251,7 +251,7 @@ const submitForm = async () => {
 
                 </div>
 
-                <p v-for="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
+                <p v-for    ="error of v$.phone.$errors" :key="error.$uid" class="eras-book red">
                     {{ error.$message }}
                 </p>
 

@@ -23,7 +23,18 @@ a,
   padding: 3px;
 }
 
+a:hover{
+  cursor: pointer;
+}
 
+
+.hide{
+  visibility: collapse;
+}
+
+.show{
+  visibility: visible;
+}
 
 .row {
   display: flex;
@@ -38,6 +49,7 @@ a,
 
 .hover:hover {
   transform: scale(1.2);
+  transition: 0.2s;
 }
 
 .eras-book {
